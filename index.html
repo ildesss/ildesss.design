@@ -565,7 +565,28 @@
             }
         }
     </style>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<style>
+  body { font-family: 'Vazirmatn', sans-serif; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('https://www.svgrepo.com/show/273722/wave.svg') no-repeat bottom;
+    background-size: cover;
+  }
+  .service-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+  }
+</style>
 </head>
+
 <body>
     <!-- هدر -->
     <header>
@@ -596,7 +617,7 @@
     <!-- محتوای اصلی -->
     <main>
         <!-- بخش معرفی شرکت -->
-        <section id="home" class="hero">
+        <section id="home" class="hero" data-aos="fade-up">
             <div class="hero-content">
                 <h1>خلاقیت در طراحی، تعهد در اجرا</h1>
                 <p>مجموعه ایلدیز باداشتن کادری خوش اتیه و خلاق در زمینه طراحی وبسایت، ساخت ربات تلگرام و طراحی گرافیک، آماده ارائه خدمات حرفه‌ای به شما عزیزان می‌باشد. ما با تیمی متخصص و خلاق، پروژه‌های شما را با بالاترین کیفیت اجرا می‌کنیم.</p>
@@ -605,7 +626,7 @@
         </section>
 
         <!-- بخش خدمات -->
-        <section id="services" class="services">
+        <section id="services" class="services" data-aos="fade-up">
             <div class="section-title">
                 <h2>خدمات ما</h2>
             </div>
@@ -644,7 +665,7 @@
         </section>
 
         <!-- بخش ثبت سفارش -->
-        <section id="order" class="order">
+        <section id="order" class="order" data-aos="fade-up">
             <div class="section-title">
               <h2>ثبت سفارش</h2>
             </div>
@@ -688,7 +709,7 @@
           </section>
           
         <!-- بخش تماس با ما -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" data-aos="fade-up">
             <div class="section-title">
                 <h2>تماس با ما</h2>
             </div>
@@ -719,7 +740,7 @@
     </main>
 
     <!-- بخش ارتباط با منتورها -->
-<section id="mentors" class="contact">
+<section id="mentors" class="contact" data-aos="fade-up">
     <div class="section-title">
       <h2>ارتباط با منتورها</h2>
     </div>
@@ -837,5 +858,9 @@
             });
         });
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 1000 });</script>
 </body>
+
 </html>
