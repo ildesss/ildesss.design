@@ -6,6 +6,8 @@
     <title>مجموعه ایلدیز | خدمات دیجیتال</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="logo1.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <style>
         :root {
             --gold: #D4AF37;
@@ -13,22 +15,140 @@
             --black: #121212;
             --dark-gray: #1E1E1E;
             --light-gray: #333;
+            --white: #f5f5f5;
+            --text-color: #ddd;
+            --text-muted: #ccc;
+
+            /* متغیرهای تم روشن */
+            --light-bg: #f8f9fa;
+            --light-text: #212529;
+            --light-card-bg: #ffffff;
+            --light-border: #dee2e6;
+            --light-header-bg: linear-gradient(to right, #efefef, #e9ecef);
         }
-        
+
+        /* استایل‌های تم روشن */
+        body.light-theme {
+            --black: var(--light-bg);
+            --dark-gray: #e9ecef; /* کمی تیره‌تر از پس‌زمینه اصلی برای کارت‌ها و بخش‌ها */
+            --light-gray: #f1f3f5; /* برای پس‌زمینه کارت‌ها در تم روشن */
+            --white: var(--light-text);
+            --text-color: #495057;
+            --text-muted: #6c757d;
+        }
+        body.light-theme header {
+            background: var(--light-header-bg);
+            border-bottom-color: var(--gold); /* حفظ رنگ طلایی برای برندینگ */
+        }
+        body.light-theme .company-name {
+            background: linear-gradient(to right, var(--gold), var(--dark-gold)); /* تغییر گرادیانت برای خوانایی بهتر در تم روشن */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light-theme nav ul li a {
+            color: var(--light-text);
+        }
+        body.light-theme nav ul li a:hover,
+        body.light-theme nav ul li a.active-link {
+            color: var(--gold);
+        }
+        body.light-theme .hero {
+             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80') no-repeat center center/cover;
+        }
+        body.light-theme .hero h1 {
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light-theme .hero p {
+            color: #343a40;
+        }
+        body.light-theme .section-dark {
+            background-color: #e9ecef; /* یک خاکستری روشن برای بخش‌های تیره در تم روشن */
+        }
+        body.light-theme .section-black {
+            background-color: var(--light-bg);
+        }
+        body.light-theme .service-card,
+        body.light-theme .order-form-container,
+        body.light-theme .contact-method {
+            background-color: var(--light-card-bg);
+            border: 1px solid var(--light-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        body.light-theme .service-card:hover,
+        body.light-theme .contact-method:hover {
+             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        body.light-theme .form-group input,
+        body.light-theme .form-group select,
+        body.light-theme .form-group textarea {
+            background-color: #f1f3f5;
+            border: 1px solid #ced4da;
+            color: var(--light-text);
+        }
+        body.light-theme .form-group input:focus,
+        body.light-theme .form-group select:focus,
+        body.light-theme .form-group textarea:focus {
+            border-color: var(--gold);
+        }
+        body.light-theme footer {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--gold);
+        }
+        body.light-theme .social-link {
+            background-color: #e9ecef;
+            color: var(--gold);
+        }
+        body.light-theme .social-link:hover {
+            background-color: var(--gold);
+            color: var(--light-text);
+        }
+        body.light-theme .copyright {
+            color: #6c757d;
+        }
+        body.light-theme .menu-toggle {
+            color: var(--gold);
+        }
+        body.light-theme nav { /* منوی موبایل در تم روشن */
+            background-color: #f8f9fa;
+            border-left: 2px solid var(--gold);
+        }
+        body.light-theme nav ul li a {
+            color: var(--light-text);
+        }
+        body.light-theme nav ul li a:hover {
+            color: var(--gold);
+        }
+        body.light-theme .theme-switcher {
+            color: var(--dark-gold);
+        }
+        body.light-theme .back-to-top {
+            background-color: var(--gold);
+            color: var(--light-text);
+        }
+
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth; /* برای اسکرول نرم در کل صفحه */
+        }
+
         body {
             background-color: var(--black);
-            color: white;
+            color: var(--white);
             overflow-x: hidden;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease; /* انیمیشن تغییر تم */
         }
-        
-        /* نوار ناوبری - بهبود یافته برای موبایل */
+
         header {
             background: linear-gradient(to right, var(--black), var(--dark-gray));
             padding: 1rem 5%;
@@ -41,13 +161,14 @@
             top: 0;
             z-index: 1000;
             border-bottom: 2px solid var(--gold);
+            transition: background-color 0.3s ease;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
         }
-        
+
         .logo {
             width: 50px;
             height: 50px;
@@ -59,41 +180,63 @@
             overflow: hidden;
             border: 2px solid var(--gold);
         }
-        
+
         .logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        
+
         .company-name {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(to right, var(--gold), #f5f5f5);
+            background: linear-gradient(to right, var(--gold), var(--white));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
-        
-        /* منوی همبرگری برای موبایل */
+
+        .header-actions { /* برای قرار دادن دکمه تم و منو */
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-switcher {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-switcher:hover {
+            color: var(--dark-gold);
+        }
+
+
         .menu-toggle {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--gold);
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
-            margin-left: 2rem;
+            margin-right: 2rem;
+            margin-left: 0;
         }
-        
+
         nav ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -101,39 +244,37 @@
             padding: 0.5rem 0;
             font-size: 0.9rem;
         }
-        
-        nav ul li a:hover {
+
+        nav ul li a:hover,
+        nav ul li a.active-link {
             color: var(--gold);
         }
-        
+
         nav ul li a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            right: 0;
             width: 0;
             height: 2px;
             background-color: var(--gold);
             transition: width 0.3s ease;
         }
-        
-        nav ul li a:hover::after {
+
+        nav ul li a:hover::after,
+        nav ul li a.active-link::after {
             width: 100%;
         }
-        
-        /* بخش اصلی */
+
         main {
             margin-top: 80px;
             min-height: calc(100vh - 160px);
         }
-        
-        /* بخش معرفی شرکت - بهبود یافته برای موبایل */
+
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80') no-repeat center center/cover;
             height: 90vh;
-            max-height: 800px;
+            max-height: 700px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -142,40 +283,42 @@
             padding: 0 5%;
             position: relative;
         }
-        
-        .hero::before {
-            content: '';
+        .hero::after {
+            content: "";
             position: absolute;
-            top: 0;
+            bottom: -1px;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, transparent 0%, var(--black) 100%);
+            height: 100px;
+            background: url('https://www.svgrepo.com/show/273722/wave.svg') no-repeat bottom;
+            background-size: cover;
+            z-index: 0;
         }
-        
+
+
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
         }
-        
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--gold), #f5f5f5);
+            background: linear-gradient(to right, var(--gold), var(--white));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             line-height: 1.3;
         }
-        
+
         .hero p {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
-            color: #ddd;
+            color: var(--text-color);
         }
-        
+
         .cta-button {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -189,26 +332,30 @@
             box-shadow: 0 0 15px var(--gold);
             font-size: 0.9rem;
         }
-        
+
         .cta-button:hover {
             background-color: transparent;
             color: var(--gold);
             box-shadow: 0 0 25px var(--gold);
             transform: translateY(-3px);
         }
-        
-        /* بخش خدمات - بهبود یافته برای موبایل */
-        .services {
+
+        .section {
             padding: 3rem 5%;
+        }
+        .section-dark {
             background-color: var(--dark-gray);
         }
-        
+        .section-black {
+            background-color: var(--black);
+        }
+
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             position: relative;
         }
-        
+
         .section-title h2 {
             font-size: 2rem;
             color: var(--gold);
@@ -216,7 +363,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -227,13 +374,13 @@
             height: 3px;
             background-color: var(--gold);
         }
-        
+
         .services-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
-        
+
         .service-card {
             background-color: var(--light-gray);
             border-radius: 10px;
@@ -241,13 +388,15 @@
             transition: all 0.3s ease;
             border: 1px solid var(--gold);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
         }
-        
+
         .service-icon {
             height: 120px;
             background-color: var(--gold);
@@ -257,183 +406,211 @@
             font-size: 3rem;
             color: var(--black);
         }
-        
+
         .service-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
+
         .service-content h3 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
             color: var(--gold);
         }
-        
+
         .service-content p {
             margin-bottom: 1.2rem;
-            color: #ccc;
-            line-height: 1.6;
+            color: var(--text-muted);
             font-size: 0.9rem;
+            flex-grow: 1;
         }
-        
+
         .service-button {
             display: inline-block;
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.3rem;
             background-color: transparent;
             color: var(--gold);
             text-decoration: none;
             border: 1px solid var(--gold);
             border-radius: 30px;
             transition: all 0.3s ease;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            align-self: flex-start;
         }
-        
+
         .service-button:hover {
             background-color: var(--gold);
             color: var(--black);
         }
-        
-        /* بخش ثبت سفارش - بهبود یافته برای موبایل */
-        .order {
-            padding: 3rem 5%;
-            background-color: var(--black);
-        }
-        
-        .order-form {
+
+        .order-form-container {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--light-gray);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--gold);
         }
-        
+
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: var(--gold);
             font-weight: 500;
             font-size: 0.9rem;
         }
-        
+
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.7rem;
+            padding: 0.8rem;
             background-color: #444;
             border: 1px solid #555;
             border-radius: 5px;
-            color: white;
+            color: var(--white);
             font-size: 0.9rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
-        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+
         .form-group textarea {
             min-height: 120px;
             resize: vertical;
         }
-        
+
         .submit-button {
             background-color: var(--gold);
             color: var(--black);
             border: none;
-            padding: 0.7rem 1.5rem;
-            font-size: 0.9rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: block;
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
-        
+
         .submit-button:hover {
             background-color: var(--dark-gold);
             box-shadow: 0 0 15px var(--gold);
         }
-        
-        /* بخش تماس با ما - بهبود یافته برای موبایل */
-        .contact {
-            padding: 3rem 5%;
-            background-color: var(--dark-gray);
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
             text-align: center;
         }
-        
+        .form-message.success {
+            background-color: #28a745;
+            color: white;
+        }
+        .form-message.error {
+            background-color: #dc3545;
+            color: white;
+        }
+
         .contact-methods {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-top: 2rem;
             flex-wrap: wrap;
         }
-        
+
         .contact-method {
             background-color: var(--light-gray);
             padding: 1.5rem;
             border-radius: 10px;
-            width: 160px;
+            width: 180px;
             transition: all 0.3s ease;
             border: 1px solid var(--gold);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
         }
-        
-        .contact-method:hover {
+        a.contact-method:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
-        
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 0.8rem;
+        div.contact-method:hover {
+             transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
-        
+
+
+        .contact-icon {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
         .contact-method h3 {
             margin-bottom: 0.5rem;
             color: var(--gold);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
-        
+
         .contact-method p {
-            color: #ccc;
-            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
         }
-        
-        /* پاورقی - بهبود یافته برای موبایل */
+        .contact-method .service-button {
+            margin-top: auto;
+        }
+
+
         footer {
             background-color: var(--black);
-            padding: 1.5rem 5%;
+            padding: 2rem 5%;
             text-align: center;
             border-top: 1px solid var(--gold);
+            transition: background-color 0.3s ease;
         }
-        
+
         .footer-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
-        
+
         .copyright {
             color: #777;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             order: 2;
         }
-        
+
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             order: 1;
         }
-        
+
         .social-link {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background-color: var(--light-gray);
             display: flex;
@@ -442,167 +619,125 @@
             color: var(--gold);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
-        
+
         .social-link:hover {
             background-color: var(--gold);
             color: var(--black);
             transform: translateY(-3px);
         }
-        
-        /* استایل های ریسپانسیو - بهبود یافته */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
+
+        /* دکمه بازگشت به بالا */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* تغییر به سمت چپ برای زبان فارسی */
+            background-color: var(--gold);
+            color: var(--black);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 998;
         }
-        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background-color: var(--dark-gold);
+        }
+
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .company-name { font-size: 1.3rem; }
+            .logo { width: 45px; height: 45px; }
+            nav ul li { margin-right: 1.5rem; }
+        }
+
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
+            .menu-toggle { display: block; }
+            .theme-switcher { margin-left: auto; /* انتقال دکمه تم به چپ منوی همبرگری */}
+
             nav {
                 position: fixed;
-                top: 80px;
-                left: -100%;
+                top: 78px;
+                right: -100%;
+                left: auto;
                 width: 80%;
-                height: calc(100vh - 80px);
+                max-width: 300px;
+                height: calc(100vh - 78px);
                 background-color: var(--dark-gray);
-                transition: all 0.3s ease;
+                transition: right 0.3s ease, background-color 0.3s ease;
                 z-index: 999;
-                border-right: 2px solid var(--gold);
+                border-left: 2px solid var(--gold);
+                border-right: none;
+                overflow-y: auto;
             }
-            
-            nav.active {
-                left: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 2rem;
-            }
-            
-            nav ul li {
-                margin: 1rem 0;
-            }
-            
-            nav ul li a {
-                font-size: 1rem;
-            }
-            
-            .hero {
-                height: 80vh;
-                padding: 0 5%;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-button {
-                padding: 0.7rem 1.5rem;
-            }
-            
-            .services-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-method {
-                width: 140px;
-                padding: 1.2rem;
-            }
+
+            nav.active { right: 0; }
+            nav ul { flex-direction: column; padding: 2rem; }
+            nav ul li { margin: 1rem 0; }
+            nav ul li a { font-size: 1rem; display: block; padding: 0.5rem; }
+
+            .hero { height: auto; min-height: 70vh; padding: 3rem 5%; }
+            .hero h1 { font-size: 1.8rem; }
+            .cta-button { padding: 0.7rem 1.5rem; font-size: 0.85rem; }
+            .services-container { grid-template-columns: 1fr; }
+            .contact-method { width: 160px; padding: 1.2rem; }
+            .footer-content { flex-direction: column-reverse; }
+            .header-actions { margin-right: auto; /* برای جلوگیری از چسبیدن به لوگو در موبایل */}
         }
-        
+
         @media (max-width: 480px) {
-            .logo {
-                width: 40px;
-                height: 40px;
-                margin-left: 10px;
-            }
-            
-            .company-name {
-                font-size: 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-            
-            .hero p {
-                font-size: 0.9rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.5rem;
-            }
-            
-            .service-icon {
-                height: 100px;
-                font-size: 2.5rem;
-            }
-            
-            .service-content h3 {
-                font-size: 1.1rem;
-            }
-            
-            .contact-methods {
-                gap: 1rem;
-            }
-            
-            .contact-method {
-                width: 120px;
-                padding: 1rem;
-            }
-            
-            .contact-icon {
-                font-size: 1.5rem;
-            }
+            .logo { width: 40px; height: 40px; margin-left: 10px; }
+            .company-name { font-size: 1.1rem; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 0.9rem; }
+            .section-title h2 { font-size: 1.6rem; }
+            .section { padding: 2rem 5%; }
+            .service-icon { height: 100px; font-size: 2.5rem; }
+            .service-content h3 { font-size: 1.2rem; }
+            .contact-methods { gap: 1rem; }
+            .contact-method { width: calc(50% - 0.5rem); padding: 1rem; }
+            .contact-icon { font-size: 1.8rem; }
+            .order-form-container { padding: 1.5rem; }
+            .submit-button { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+            .back-to-top { width: 40px; height: 40px; font-size: 1.3rem; bottom: 15px; left: 15px;}
         }
     </style>
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-<style>
-  body { font-family: 'Vazirmatn', sans-serif; }
-  .hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: url('https://www.svgrepo.com/show/273722/wave.svg') no-repeat bottom;
-    background-size: cover;
-  }
-  .service-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
-  }
-</style>
 </head>
 
 <body>
-    <!-- هدر -->
     <header>
         <div class="logo-container">
             <div class="logo">
-                <!-- جایگزین کردن لوگوی خودتان -->
-                <!-- برای استفاده، تصویر لوگوی خود را در کنار فایل index.html قرار دهید و مسیر آن را در src مشخص کنید -->
-                <img src="logo.png" alt="لوگوی شرکت">
+                <img src="logo.png" alt="لوگوی شرکت ایلدیز" title="لوگوی شرکت ایلدیز">
             </div>
             <h1 class="company-name">ILDESSS</h1>
         </div>
-        
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+
+        <div class="header-actions">
+            <button class="theme-switcher" id="theme-switcher" aria-label="تغییر تم">
+                <i class="fas fa-sun"></i> </button>
+            <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-    
+
         <nav>
             <ul>
                 <li><a href="#home">خانه</a></li>
@@ -614,253 +749,275 @@
         </nav>
     </header>
 
-    <!-- محتوای اصلی -->
     <main>
-        <!-- بخش معرفی شرکت -->
-        <section id="home" class="hero" data-aos="fade-up">
+        <section id="home" class="hero section" data-aos="fade-up">
             <div class="hero-content">
                 <h1>خلاقیت در طراحی، تعهد در اجرا</h1>
-                <p>مجموعه ایلدیز باداشتن کادری خوش اتیه و خلاق در زمینه طراحی وبسایت، ساخت ربات تلگرام و طراحی گرافیک، آماده ارائه خدمات حرفه‌ای به شما عزیزان می‌باشد. ما با تیمی متخصص و خلاق، پروژه‌های شما را با بالاترین کیفیت اجرا می‌کنیم.</p>
+                <p>مجموعه ایلدیز با داشتن کادری خوش آتیه و خلاق در زمینه طراحی وبسایت، ساخت ربات تلگرام و طراحی گرافیک، آماده ارائه خدمات حرفه‌ای به شما عزیزان می‌باشد. ما با تیمی متخصص و خلاق، پروژه‌های شما را با بالاترین کیفیت اجرا می‌کنیم.</p>
                 <a href="#services" class="cta-button">مشاهده خدمات</a>
             </div>
         </section>
 
-        <!-- بخش خدمات -->
-        <section id="services" class="services" data-aos="fade-up">
+        <section id="services" class="section section-dark" data-aos="fade-up">
             <div class="section-title">
                 <h2>خدمات ما</h2>
             </div>
             <div class="services-container">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"> <i class="fas fa-code"></i> </div>
                     <div class="service-content">
                         <h3>طراحی وبسایت</h3>
-                        <p>طراحی وبسایت اختصاصی و حرفه‌ای با جدیدترین تکنولوژی‌های روز دنیا، مناسب برای کسب‌وکارهای مختلف از جمله فروشگاهی، شرکتی و شخصی.</p>
+                        <p>طراحی وبسایت اختصاصی و حرفه‌ای با جدیدترین تکنولوژی‌های روز دنیا، مناسب برای کسب‌وکارهای مختلف.</p>
                         <a href="#order" class="service-button">سفارش دهید</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"> <i class="fas fa-robot"></i> </div>
                     <div class="service-content">
                         <h3>ربات تلگرام</h3>
-                        <p>طراحی و پیاده‌سازی ربات تلگرام با قابلیت‌های مختلف از جمله فروشگاهی، پشتیبانی، اطلاع‌رسانی و سرگرمی با بهترین کیفیت و قیمت.</p>
+                        <p>طراحی و پیاده‌سازی ربات تلگرام با قابلیت‌های مختلف با بهترین کیفیت و قیمت.</p>
                         <a href="#order" class="service-button">سفارش دهید</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"> <i class="fas fa-paint-brush"></i> </div>
                     <div class="service-content">
                         <h3>طراحی گرافیک</h3>
-                        <p>خدمات طراحی گرافیک شامل طراحی لوگو، بنر، کارت ویزیت، کاتالوگ، اینفوگرافیک و سایر موارد با خلاقیت و ایده‌پردازی حرفه‌ای.</p>
+                        <p>خدمات طراحی گرافیک شامل طراحی لوگو، بنر، کارت ویزیت و سایر موارد با خلاقیت و ایده‌پردازی حرفه‌ای.</p>
                         <a href="#order" class="service-button">سفارش دهید</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- بخش ثبت سفارش -->
-        <section id="order" class="order" data-aos="fade-up">
-            <div class="section-title">
-              <h2>ثبت سفارش</h2>
-            </div>
-            <div class="order-form">
+        <section id="order" class="section section-black" data-aos="fade-up">
+            <div class="section-title"> <h2>ثبت سفارش</h2> </div>
+            <div class="order-form-container">
               <form action="https://formsubmit.co/ildesss.design@gmail.com" method="POST">
                 <div class="form-group">
                   <label for="name">نام و نام خانوادگی</label>
-                  <input type="text" id="name" name="name" required>
+                  <input type="text" id="name" name="name" required placeholder="مثال: علی محمدی">
                 </div>
                 <div class="form-group">
                   <label for="email">ایمیل</label>
-                  <input type="email" id="email" name="email" required>
+                  <input type="email" id="email" name="email" required placeholder="مثال: user@example.com">
                 </div>
                 <div class="form-group">
                   <label for="phone">شماره تماس</label>
-                  <input type="tel" id="phone" name="phone" required>
+                  <input type="tel" id="phone" name="phone" required placeholder="مثال: 09123456789">
                 </div>
                 <div class="form-group">
-                  <label for="service">نوع خدمت</label>
-                  <select id="service" name="service" required>
+                  <label for="service-type">نوع خدمت</label>
+                  <select id="service-type" name="service" required>
                     <option value="">-- انتخاب کنید --</option>
                     <option value="website">طراحی وبسایت</option>
                     <option value="telegram-bot">ربات تلگرام</option>
                     <option value="graphic-design">طراحی گرافیک</option>
+                    <option value="other">سایر خدمات</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="details">توضیحات پروژه</label>
-                  <textarea id="details" name="details" required></textarea>
+                  <textarea id="details" name="details" required placeholder="لطفا جزئیات پروژه خود را شرح دهید..."></textarea>
                 </div>
-          
-                <!-- گزینه‌های پنهان برای تنظیم بهتر -->
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="سفارش جدید از فرم سایت!">
-                <input type="hidden" name="_autoresponse" value="سفارش شما با موفقیت ثبت شد. به زودی با شما تماس می‌گیریم.">
+                <input type="hidden" name="_subject" value="سفارش جدید از فرم سایت ایلدیز!">
+                <input type="hidden" name="_autoresponse" value="از اینکه با مجموعه ایلدیز تماس گرفتید متشکریم. سفارش شما با موفقیت ثبت شد و کارشناسان ما به زودی با شما تماس خواهند گرفت.">
                 <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-          
                 <button type="submit" class="submit-button">ارسال سفارش</button>
+                <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
               </form>
             </div>
           </section>
-          
-        <!-- بخش تماس با ما -->
-        <section id="contact" class="contact" data-aos="fade-up">
-            <div class="section-title">
-                <h2>تماس با ما</h2>
-            </div>
+
+        <section id="contact" class="section section-dark" data-aos="fade-up">
+            <div class="section-title"> <h2>تماس با ما</h2> </div>
             <div class="contact-methods">
-                <a href="https://wa.me/message/DD2G5LKK26ZRF1" target="_blank" class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>واتساپ</h3>
-                    <p>برای ارتباط سریع</p>
+                <a href="https://wa.me/message/DD2G5LKK26ZRF1" target="_blank" class="contact-method" data-aos="fade-right" aria-label="تماس با ما از طریق واتساپ">
+                    <div class="contact-icon"> <i class="fab fa-whatsapp"></i> </div>
+                    <h3>واتساپ</h3> <p>برای ارتباط سریع</p>
                 </a>
-                <a href="https://t.me/ildesss_design" target="_blank" class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3>تلگرام</h3>
-                    <p>کانال پشتیبانی</p>
+                <a href="https://t.me/ildesss_design" target="_blank" class="contact-method" data-aos="fade-up" aria-label="عضویت در کانال تلگرام ما">
+                    <div class="contact-icon"> <i class="fab fa-telegram"></i> </div>
+                    <h3>تلگرام</h3> <p>کانال پشتیبانی</p>
                 </a>
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>تلفن</h3>
-                    <p>0993-827-7055</p>
+                <div class="contact-method" data-aos="fade-left">
+                    <div class="contact-icon"> <i class="fas fa-phone"></i> </div>
+                    <h3>تلفن</h3> <p>0993-827-7055</p>
                 </div>
             </div>
         </section>
+
+        <section id="mentors" class="section section-black" data-aos="fade-up">
+            <div class="section-title"> <h2>ارتباط با منتورها</h2> </div>
+            <div class="contact-methods">
+              <div class="contact-method" data-aos="zoom-in-up">
+                <div class="contact-icon"> <i class="fas fa-user-tie"></i> </div>
+                <h3>ایلیا</h3> <p>مدیریت مجموعه</p>
+                <a href="https://t.me/ilia_brp" target="_blank" class="service-button" aria-label="ارتباط با ایلیا از طریق تلگرام">ارتباط تلگرام</a>
+              </div>
+              <div class="contact-method" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="contact-icon"> <i class="fas fa-user-tie"></i> </div>
+                <h3>محمد</h3> <p>متخصص برنامه‌نویسی</p>
+                <a href="https://t.me/mamadPNG" target="_blank" class="service-button" aria-label="ارتباط با محمد از طریق تلگرام">ارتباط تلگرام</a>
+              </div>
+              <div class="contact-method" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="contact-icon"> <i class="fas fa-user-tie"></i> </div>
+                <h3>امیر</h3> <p>ادمین پاسخگو</p>
+                <a href="https://t.me/Amir1bax" target="_blank" class="service-button" aria-label="ارتباط با امیر از طریق تلگرام">ارتباط تلگرام</a>
+              </div>
+               <div class="contact-method" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="contact-icon"> <i class="fas fa-user-tie"></i> </div>
+                <h3>علی</h3> <p>بخش مشاوره</p>
+                <a href="https://t.me/Moossccow" target="_blank" class="service-button" aria-label="ارتباط با علی از طریق تلگرام">ارتباط تلگرام</a>
+              </div>
+               <div class="contact-method" data-aos="zoom-in-up" data-aos-delay="400">
+                <div class="contact-icon"> <i class="fas fa-user-tie"></i> </div>
+                <h3>مهدی</h3> <p>متخصص برنامه‌نویسی</p>
+                <a href="https://t.me/Pepel_2009" target="_blank" class="service-button" aria-label="ارتباط با مهدی از طریق تلگرام">ارتباط تلگرام</a>
+              </div>
+            </div>
+          </section>
     </main>
 
-    <!-- بخش ارتباط با منتورها -->
-<section id="mentors" class="contact" data-aos="fade-up">
-    <div class="section-title">
-      <h2>ارتباط با منتورها</h2>
-    </div>
-    <div class="contact-methods">
-         <!-- منتور اول -->
-      <div class="contact-method">
-        <div class="contact-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>iliya</h3>
-        <p>مدیریت مجموعه</p>
-        <a href="https://t.me/ilia_brp" target="_blank" class="service-button">ارتباط تلگرام</a>
-      </div>
-      <!-- منتور اول -->
-      <div class="contact-method">
-        <div class="contact-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>mohammad</h3>
-        <p>متخصص برنامه نویسی</p>
-        <a href="https://t.me/mamadPNG" target="_blank" class="service-button">ارتباط تلگرام</a>
-      </div>
-      <!-- منتور دوم -->
-      <div class="contact-method">
-        <div class="contact-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>amir</h3>
-        <p>ادمین پاسخگو</p>
-        <a href="https://t.me/Amir1bax" target="_blank" class="service-button">ارتباط تلگرام</a>
-      </div>
-       <!-- منتور سوم-->
-       <div class="contact-method">
-        <div class="contact-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>Ali</h3>
-        <p>بخش مشاوره</p>
-        <a href="https://t.me/Moossccow" target="_blank" class="service-button">ارتباط تلگرام</a>
-      </div>
-       <!-- منتور چهارم-->
-       <div class="contact-method">
-        <div class="contact-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>Mahdi</h3>
-        <p>متخصص برنامه نویسی</p>
-        <a href="https://t.me/Pepel_2009" target="_blank" class="service-button">ارتباط تلگرام</a>
-      </div>
-    </div>
-  </section>
-  
-    <!-- پاورقی -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="https://www.instagram.com/ilidesss/?utm_source=qr&r=nametag" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/ilidesss/?utm_source=qr&r=nametag" class="social-link" target="_blank" aria-label="صفحه اینستاگرام ایلدیز"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="copyright">
-                <p>© 2025 مجموعه ایلدیز. تمامی حقوق محفوظ است.</p>
+                <p>&copy; <span id="current-year">2025</span> مجموعه ایلدیز. تمامی حقوق محفوظ است.</p>
             </div>
         </div>
     </footer>
+
+    <a href="#" class="back-to-top" aria-label="بازگشت به بالای صفحه">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script>
         // اسکریپت برای منوی همبرگری
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.innerHTML = nav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // بستن منو هنگام کلیک روی لینک‌ها
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                const isNavActive = nav.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', isNavActive);
+                menuToggle.innerHTML = isNavActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
-        });
-        
-        // اسکریپت برای فرم سفارش
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // جمع‌آوری داده‌های فرم
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                details: document.getElementById('details').value
-            };
-            
-            // در اینجا می‌توانید داده‌ها را به سرور ارسال کنید
-            console.log('فرم سفارش:', formData);
-            
-            // نمایش پیام موفقیت
-            alert('سفارش شما با موفقیت ثبت شد! به زودی با شما تماس خواهیم گرفت.');
-            
-            // ریست کردن فرم
-            this.reset();
-        });
-        
-        // اسکریپت برای اسکرول نرم
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
                 });
             });
+        }
+
+        // اسکریپت برای فرم سفارش با FormSubmit
+        const orderForm = document.querySelector('.order-form-container form');
+        const formMessage = document.getElementById('form-message');
+
+        if (orderForm && formMessage) {
+            orderForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const action = this.getAttribute('action');
+                formMessage.textContent = 'در حال ارسال سفارش...';
+                formMessage.className = 'form-message';
+
+                try {
+                    const response = await fetch(action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        formMessage.textContent = 'سفارش شما با موفقیت ثبت شد! به زودی با شما تماس خواهیم گرفت.';
+                        formMessage.classList.add('success');
+                        this.reset();
+                        // اگر می‌خواهید به صفحه تشکر هدایت شوید، این خط را از کامنت خارج کنید
+                        // const nextUrl = this.querySelector('input[name="_next"]').value;
+                        // if (nextUrl) window.location.href = nextUrl;
+                    } else {
+                        const errorData = await response.json().catch(() => ({}));
+                        formMessage.textContent = errorData.message || 'خطایی در ارسال سفارش رخ داد. لطفا دوباره تلاش کنید.';
+                        formMessage.classList.add('error');
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    formMessage.textContent = 'خطایی در ارتباط با سرور رخ داد. لطفا دوباره تلاش کنید.';
+                    formMessage.classList.add('error');
+                }
+            });
+        }
+
+        // اسکریپت برای اسکرول نرم (حذف شد چون html { scroll-behavior: smooth; } اضافه شد)
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => { /* ... */ });
+
+        // تنظیم سال جاری در کپی‌رایت
+        const currentYearSpan = document.getElementById('current-year');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // اسکریپت برای دکمه "بازگشت به بالا"
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) { // نمایش دکمه پس از 300 پیکسل اسکرول
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            // عملکرد کلیک در HTML با href="#" انجام می‌شود، نیازی به JS اضافی نیست اگر scroll-behavior فعال باشد
+        }
+
+        // اسکریپت برای تغییردهنده تم
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const body = document.body;
+        const themeIcon = themeSwitcher.querySelector('i');
+
+        // بررسی تم ذخیره شده در localStorage
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            // پیش‌فرض تم تاریک است یا اگر چیزی ذخیره نشده باشد
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeSwitcher.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
         });
+
     </script>
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ duration: 1000 });</script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+    </script>
 </body>
-
 </html>
